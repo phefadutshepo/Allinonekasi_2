@@ -3,8 +3,13 @@ import './App.css';
 import { googleSignIn } from './firebase';
 
 const Login = () => {
+  const loginbool = googleSignIn()
 
-  return  googleSignIn();
+  return (
+    <>
+      <p>`{loginbool}`</p>
+    </>
+  ) ;
 };
 
 export default Login;

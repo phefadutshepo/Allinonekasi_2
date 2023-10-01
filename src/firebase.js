@@ -1,26 +1,31 @@
 // Import the functions you need from the SDKs you need
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import "firebase/firestore";
+import Landingpage from "./landing";
 
 
+function initialize() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvBPA8yqur9xxyB0YuG6rZR8E-61VorEk",
+    authDomain: "allinonekasi-2e326.firebaseapp.com",
+    projectId: "allinonekasi-2e326",
+    storageBucket: "allinonekasi-2e326.appspot.com",
+    messagingSenderId: "282343794487",
+    appId: "1:282343794487:web:e954dae8bf2b4791c71cb2",
+    measurementId: "G-7YZHV742ZS"
+    };
 
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    return app;
+}
 
 function googleSignIn() {
     const provider = new GoogleAuthProvider();
 
-    const firebaseConfig = {
-            apiKey: "AIzaSyCvBPA8yqur9xxyB0YuG6rZR8E-61VorEk",
-            authDomain: "allinonekasi-2e326.firebaseapp.com",
-            projectId: "allinonekasi-2e326",
-            storageBucket: "allinonekasi-2e326.appspot.com",
-            messagingSenderId: "282343794487",
-            appId: "1:282343794487:web:e954dae8bf2b4791c71cb2",
-            measurementId: "G-7YZHV742ZS"
-            };
-        
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
+    initialize();
     
     const auth = getAuth();
     signInWithPopup(auth, provider)
@@ -30,8 +35,21 @@ function googleSignIn() {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        console.log(user);
         // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        // Listen for changes in user authentication state
+        auth.onAuthStateChanged((user) => {
+          // if (user) {
+          //   // User is signed in, you can fetch their data and display the landing page
+          //   return true;
+
+          // } else {
+          //   // User is signed out, handle accordingly
+          //   return false;
+          // }
+          return true;
+        });
+
     }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -43,52 +61,22 @@ function googleSignIn() {
         // ...
     });}
 
+
+function fetchUserLandingPage(userID) {
+  // Example: Fetch user data from Firestore
+  const db = firebase.firestore();
+  const userRef = db.collection("users").doc(userID);
+
+  userRef.get().then((doc) => {
+    if (doc.exists) {
+      // User data found, you can access it using doc.data()
+      const userData = doc.data();
+      // Render the landing page with user data and history
+    } else {
+      // User data not found, handle accordingly
+    }
+  });
+
+} 
+
     export { googleSignIn };
-
-    
-// function emailPasswordSign() {
-    
-//     // TODO: Add SDKs for Firebase products that you want to use
-//     // https://firebase.google.com/docs/web/setup#available-libraries
-
-//     // Your web app's Firebase configuration
-//     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-//     const firebaseConfig = {
-//     apiKey: "AIzaSyCvBPA8yqur9xxyB0YuG6rZR8E-61VorEk",
-//     authDomain: "allinonekasi-2e326.firebaseapp.com",
-//     projectId: "allinonekasi-2e326",
-//     storageBucket: "allinonekasi-2e326.appspot.com",
-//     messagingSenderId: "282343794487",
-//     appId: "1:282343794487:web:e954dae8bf2b4791c71cb2",
-//     measurementId: "G-7YZHV742ZS"
-//     };
-
-//     // Initialize Firebase
-//     const app = initializeApp(firebaseConfig);
-//     const analytics = getAnalytics(app);
-
-//     // Sign up a new user
-//     firebase.auth().createUserWithEmailAndPassword(email, password)
-//     .then((userCredential) => {
-//     // User registered successfully
-//     const user = userCredential.user;
-//     })
-//     .catch((error) => {
-//     // Handle registration errors
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     });
-
-//     // Sign in an existing user
-//     firebase.auth().signInWithEmailAndPassword(email, password)
-//     .then((userCredential) => {
-//     // User signed in successfully
-//     const user = userCredential.user;
-//     })
-//     .catch((error) => {
-//     // Handle sign-in errors
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     });
-
-//     }
