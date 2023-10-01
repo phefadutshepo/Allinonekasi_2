@@ -1,7 +1,7 @@
-body {
+/* body {
   font-family: Arial, sans-serif;
-  background-color: #2196F3; /* Blue background color */
-  margin: 0;
+  background-color: #2196F3; Blue background color */
+  /* margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -11,18 +11,18 @@ body {
 
 .container {
   background-color: #fff; /* White container background */
-  padding: 20px;
+  /* padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-}
+} */
 
-h2 {
+/* h2 {
   color: #2196F3; /* Blue heading color */
-  text-align: center;
-}
+  /* text-align: center;
+} */
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
 }
@@ -38,28 +38,49 @@ input[type="password"] {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
-button[type="submit"] {
-  background-color: #2196F3; /* Blue button background color */
-  color: #fff; /* Button text color */
-  padding: 10px;
+/* button[type="submit"] { */
+  /* background-color: #2196F3; Blue button background color */
+  /* color: #fff; Button text color */
+  /* padding: 10px; */
   /* border: none; */
-  border-radius: 4px;
+  /* border-radius: 4px;
   cursor: pointer;
-}
+} */
 
-button[type="submit"]:hover {
+/* button[type="submit"]:hover {
   background-color: #1976D2; /* Darker blue on hover */
-}
+/* } */
 
-button {
+/* button { */
   /* background: none;
   border: none; */
-  color: #2196F3;
+  /* color: #2196F3;
   cursor: pointer;
+} */
+
+/* button:focus {
+  outline: none;
+} */
+#login---screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #5FB709;
+  color: white;
+  margin-top: 200px;
+  margin-left: 40%;
+  max-width: 300px;
+  padding: 25px;
+  border-radius: 10px;
+
 }
 
-button:focus {
-  outline: none;
+#login---screen form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

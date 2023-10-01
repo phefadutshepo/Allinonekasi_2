@@ -14,20 +14,19 @@ export default function Login() {
 
       {showLogin ? (
         
-        <div>
+        <div id = "login---screen">
            <button onClick={toggleView}>
             {'Switch to GoogleSignIn'}
           </button>
           <h2>Login</h2>
           <form>
-            <p>-----------------------------------------------</p>
             <div>
-              <label>Email:</label>
-              <input type="email" name="email" />
+              <label id='label'>Email     :</label>
+              <input id="right" type="email" name="email" />
             </div>
             <div>
-              <label>Password:</label>
-              <input type="password" name="password" />
+              <label id='label'>Password  :</label>
+              <input id="right" type="password" name="password" />
             </div>
             <button type="submit">Login</button>
           </form>
