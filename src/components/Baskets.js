@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/baskets.css';
-import utils from '../utils'
+import utils from '../utils';
 
 const Baskets = (props) => {
     
